@@ -4,8 +4,21 @@ import './App.css';
 import Profile from './Profile';
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.state ={
+      name:'ActivEdge'
+    }
+  }
+  componentWillMount(){
+    console.log('Called Immediately: Component Will Mount');
+  }
+  componentWillUpdate(){
+    console.log('Updated call of componentWill Update ');
+  }
   handleInputChange = (event)=>{
-    console.log('You typed ',event.target.value)
+    // console.log('You typed ',event.target.value);
+    this.setState({name:event.target.value});
   }
   render() {
     var name = "Mr Kehinde";
@@ -21,7 +34,7 @@ class App extends Component {
 
         </p>
         <input onChange={this.handleInputChange}/>
-        <p>We are at Active Edge {name}</p>
+        <p>We are at {this.state.name}</p>
         <p>Today's Date is {new Date().toLocaleDateString()}</p>
         <Profile name="Farooq" age="21"/>
       </div>
